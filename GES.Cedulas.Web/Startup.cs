@@ -76,6 +76,7 @@ namespace Formulario
             services.AddScoped<IMensajeriaRepository, MensajeriaRepository>();
             services.AddScoped<ILimpiezaRepository, LimpiezaRepsitory>();
             services.AddScoped<IFumigacionRepository, FumigacionRepository>();
+            services.AddScoped<IFormularioRepository, FormularioRepository>();
 
 
             // In production, the React files will be served from this directory

@@ -33,7 +33,7 @@ namespace Formulario
 
 
 
-//Scaffold-DbContext -Connection name=DatabaseConnection -Provider Microsoft.EntityFrameworkCore.SqlServer -UseDatabaseNames -Force –Tables "EvaluacionMensajeria", "CedulasAreaInmueble", "InmueblesCJF", "CedMenRecoleccion", "CedMenEntrega", "CedMenAcuse", "CedMenMaterial", "CedMenExtravio", "CedMenMalEstado", "EvaluacionLimpieza", "CedLimpActividades", "CedLimpEquipo", "EvaluacionFumigacion", "CedFumFechas", "CedFumHoras", "CedFumFumigacion", "EntregablesLimpieza", "ContratoCedula", "CatalogoServicios", "EntregablesFumigacion", "ArchivosCedulas" -OutputDir Model
+//Scaffold-DbContext -Connection name=DatabaseConnection -Provider Microsoft.EntityFrameworkCore.SqlServer -UseDatabaseNames -Force –Tables "Datos" -OutputDir Model
 
 //EvaluacionMensajeria-
 //CedulasAreaInmueble-
