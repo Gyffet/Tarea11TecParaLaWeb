@@ -17,9 +17,9 @@ namespace Formulario.Repositories
 
     public class FormularioRepository : IFormularioRepository
     {
-        private readonly BD_HerramientasDGSGContext context;
+        private readonly FormularioContext context;
 
-        public FormularioRepository(BD_HerramientasDGSGContext context)
+        public FormularioRepository(FormularioContext context)
         {
             this.context = context;
         }

@@ -65,17 +65,14 @@ namespace Formulario
             });
 
             //Base de datos
-            services.AddDbContext<BD_HerramientasDGSGContext>(opts =>
+            services.AddDbContext<FormularioContext>(opts =>
                 opts.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
 
 
             
             //Repositorios
 
-            services.AddScoped<ICedulasRepository, CedulasRepository>();
-            services.AddScoped<IMensajeriaRepository, MensajeriaRepository>();
-            services.AddScoped<ILimpiezaRepository, LimpiezaRepsitory>();
-            services.AddScoped<IFumigacionRepository, FumigacionRepository>();
+            
             services.AddScoped<IFormularioRepository, FormularioRepository>();
 
 

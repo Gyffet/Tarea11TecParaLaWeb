@@ -23,11 +23,11 @@ namespace Formulario.Controllers.api
         
         [HttpPost]
         [Route("enviar")]
-        public IActionResult guardarFormulario(string persona, string institucion, string capacitacion)
+        public IActionResult guardarFormulario(string jsonPersona, string jsonIntitucion, string jsonCapacitacion)
         {
             try
             {
-                //var a = JsonConvert.DeserializeObject<Entregables>(entregables);
+                //var a = JsonConvert.DeserializeObject<Entregables>(jsonPersona);
                 repository.guardarFormulario();
                 return Ok();
             }
