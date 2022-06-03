@@ -1,182 +1,129 @@
 <template>
     <v-container>
-        <v-layout text-center wrap fluid>
-            <v-flex xs12>
-                <br /><br /><br /><br /><br /><br />
-                <v-img :src="require('../assets/logotipoCJF_vertical_color.png')"
-                       class="my-3"
-                       contain
-                       height="200"></v-img>
-                <v-btn class="ma-2"
-                       outlined
-                       color="indigo"
-                       v-if="!loggedIn"
-                       large to="/login">Login</v-btn>
-            </v-flex>
-        </v-layout>
+        <v-row class="text-center">
+            <v-col class="mb-4">
+                <h1 class="display-2 font-weight-bold mb-3">
+                    Bienvenido al Formulario de la Tarea 11 de Tecnologias para la Web
+                </h1>
+            </v-col>
+
+            <v-col class="mb-5" cols="12">
+
+                <v-btn class="mb-4"
+                       elevation="2"
+                       color="blue darken-1"
+                       raised
+                       dark
+                       link :to="{ path: '/altas' }"
+                       x-large
+                       rounded>
+                    Altas
+                </v-btn>
+                <br />
+                <v-btn class="mb-4"
+                       elevation="2"
+                       color="blue darken-1"
+                       raised
+                       dark
+                       link :to="{ path: '/altas' }"
+                       x-large
+                       rounded>
+                    Modificaciones
+                </v-btn>
+                <br />
+                <v-btn class="mb-4"
+                       elevation="2"
+                       color="blue darken-1"
+                       raised
+                       dark
+                       link :to="{ path: '/altas' }"
+                       x-large
+                       rounded>
+                    Listados
+                </v-btn>
+                <br />
+                <v-btn class="mb-4"
+                       elevation="2"
+                       color="blue darken-1"
+                       raised
+                       dark
+                       link :to="{ path: '/altas' }"
+                       x-large
+                       rounded>
+                    Bajas
+                </v-btn>
+
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
 <script>
     export default {
-        name: 'User',
-        data: () => ({}),
-        computed: {
-            loggedIn() {
-                return this.$store.state.auth.user == null ? false : true;
-            }
-        }
-    }
-</script>
-
-<style scoped>
-</style>
-
-<!--<template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-    <router-link to="/administrador">Go to Foo</router-link>
-    <router-link to="/director">Go to Bar</router-link>
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br />please join our online
-          <a href="https://community.vuetifyjs.com" target="_blank"
-            >Discord Community</a
-          >
-        </p>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
-</template>
-
-<script>
-export default {
-  name: "HelloWorld",
-
-  data: () => ({
-    ecosystem: [
-      {
-        text: "vuetify-loader",
-        href: "https://github.com/vuetifyjs/vuetify-loader"
-      },
-      {
-        text: "github",
-        href: "https://github.com/vuetifyjs/vuetify"
-      },
-      {
-        text: "awesome-vuetify",
-        href: "https://github.com/vuetifyjs/awesome-vuetify"
-      }
-    ],
-    importantLinks: [
-      {
-        text: "Documentation",
-        href: "https://vuetifyjs.com"
-      },
-      {
-        text: "Chat",
-        href: "https://community.vuetifyjs.com"
-      },
-      {
-        text: "Made with Vuetify",
-        href: "https://madewithvuejs.com/vuetify"
-      },
-      {
-        text: "Twitter",
-        href: "https://twitter.com/vuetifyjs"
-      },
-      {
-        text: "Articles",
-        href: "https://medium.com/vuetify"
-      }
-    ],
-    whatsNext: [
-      {
-        text: "Explore components",
-        href: "https://vuetifyjs.com/components/api-explorer"
-      },
-      {
-        text: "Select a layout",
-        href: "https://vuetifyjs.com/layout/pre-defined"
-      },
-      {
-        text: "Frequently Asked Questions",
-        href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
-      }
-    ]
+        name: "Inicio",
+        data: () => ({
+            administradores: [
+                {
+                    nombre: 'Cuautémoc del Río Reyes',
+                    servicio: 'Agua para Beber',
+                    extencion: '#318-2643',
+                    correo: 'cuauhtemoc.delrio.reyes@correo.cjf.gob.mx'
+                },
+                {
+                    nombre: 'Carlos Agustín Espinosa Barrera',
+                    servicio: 'Limpieza',
+                    extencion: '#318-2643',
+                    correo: 'carlos.espinosa.barrera@correo.cjf.gob.mx'
+                },
+                {
+                    nombre: 'Marco Antonio Paredes Vázquez',
+                    servicio: 'Mensajería',
+                    extencion: '#318-2643',
+                    correo: 'marco.paredes.vazquez@correo.cjf.gob.mx'
+                },
+                {
+                    nombre: 'Gerardo Benjamin Reyna Cruz',
+                    servicio: 'Fumigación',
+                    extencion: '#318-2507',
+                    correo: 'gerardo.reyna.cruz@correo.cjf.gob.mx'
+                },
+                {
+                    nombre: 'María Belén Serrano Olvera',
+                    servicio: 'Comedor',
+                    extencion: '#318-2515',
+                    correo: 'maria.serrano.olvera@correo.cjf.gob.mx'
+                },
+                {
+                    nombre: 'Oscar Iván Guerrero Esqueda',
+                    servicio: 'Administrador del sistema',
+                    extencion: '#318-2507',
+                    correo: 'oscar.guerrero.esqueda@correo.cjf.gob.mx'
+                },
+            ]
+            //whatsNext: [
+            //    {
+            //        text: "Explore components",
+            //        href: "https://vuetifyjs.com/components/api-explorer"
+            //    },
+            //    {
+            //        text: "Select a layout",
+            //        href: "https://vuetifyjs.com/layout/pre-defined"
+            //    },
+            //    {
+            //        text: "Frequently Asked Questions",
+            //        href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
+            //    }
+            //]
         }),
         computed: {
             loggedIn() {
                 return this.$store.state.auth.user == null ? false : true;
             },
+            currentUser() {
+                if (this.loggedIn)
+                    return this.$store.state.auth.user;
+                return false;
+            },
         }
-};
+    };
 </script>
--->
