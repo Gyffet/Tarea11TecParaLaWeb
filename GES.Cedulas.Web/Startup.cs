@@ -21,7 +21,6 @@ namespace Formulario
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            //Spire.License.LicenseProvider.SetLicenseKey("8XJFSX0F9OQD");
         }
 
         public IConfiguration Configuration { get; }
