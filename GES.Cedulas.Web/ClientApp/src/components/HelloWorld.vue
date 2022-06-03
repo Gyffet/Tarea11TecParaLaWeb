@@ -25,7 +25,7 @@
                        color="blue darken-1"
                        raised
                        dark
-                       link :to="{ path: '/altas' }"
+                       link :to="{ path: '/modificaciones' }"
                        x-large
                        rounded>
                     Modificaciones

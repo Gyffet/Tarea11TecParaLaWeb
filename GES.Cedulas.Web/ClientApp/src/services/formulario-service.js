@@ -31,6 +31,58 @@ class FormularioServices {
             });
     }
 
+    modificar(e) {
+        console.log('service formulario');
+        console.log(e);
+        return axios.post(Utils.urlAPI() + 'formulario/modificar',
+            {
+                'nombre': e.persona.nombre,
+                'apellido': e.persona.apellido,
+                'direccion': e.persona.direccion,
+                'telefono': e.persona.telefono,
+                'correo': e.persona.correo,
+                'documento': e.persona.documento,
+                'fechaNacimiento': e.persona.fechaNacimiento,
+            },
+            {
+                params: {
+                    jsonIntitucion: e.institucion,
+                    jsonCapacitacion: e.capacitacion,
+                    jsonPago: e.pago,
+                    id: e.id
+                },
+                headers: authHeader()
+            })
+            .then(this.handleResponse).then(response => {
+                console.log('api guardar formulario');
+                console.log(response);
+                return response.data;
+            });
+    }
+
+    getPersonas() {
+        return axios.get(Utils.urlAPI() + 'formulario/getTodas', {
+            headers: authHeader()
+        }).then(this.handleResponse)
+            .then(response => {
+                return response.data;
+            });
+    }
+
+    getPersona(f) {
+        console.log("Service folio:" + f);
+        return axios.get(Utils.urlAPI() + 'formulario/getPersona', {
+            params: {
+                folio: f
+            },
+            headers: authHeader()
+        }).then(this.handleResponse)
+            .then(response => {
+                return response.data;
+            });
+    }
+
+
 
 
 

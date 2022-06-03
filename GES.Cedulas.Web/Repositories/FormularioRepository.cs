@@ -14,6 +14,9 @@ namespace Formulario.Repositories
     public interface IFormularioRepository
     {
         public void guardarFormulario(Persona persona, Institucion institucion, Capacitacion capacitacion, Pago pago);
+        public dynamic getTodas();
+        public void modificarFormulario(Persona persona, Institucion institucion, Capacitacion capacitacion, Pago pago, int id);
+        public dynamic getPersona(int folio);
     }
 
     public class FormularioRepository : IFormularioRepository
@@ -44,5 +47,50 @@ namespace Formulario.Repositories
             context.Add(datos);
             context.SaveChanges();
         }
+
+        public void modificarFormulario(Persona persona, Institucion institucion, Capacitacion capacitacion, Pago pago, int id)
+        {
+            var modificar = (from registro in context.Datos
+                             where registro.pkFormulario.Equals(id)
+                             select registro).FirstOrDefault();
+            modificar.nombre = persona.nombre;
+            modificar.apellido = persona.apellido;
+            modificar.direccion = persona.direccion;
+            modificar.telefono = persona.telefono;
+            modificar.correo = persona.correo;
+            modificar.documento = persona.documento;
+            modificar.fechaNacimiento = persona.fechaNacimiento;
+            modificar.curso = capacitacion.nombre;
+            modificar.horario = capacitacion.horario;
+            modificar.formaPago = pago.pago;
+            modificar.NoContrato = institucion.numero;
+            modificar.personaAtendio = institucion.personas;
+            modificar.fechaInscripcion = institucion.fecha;
+            context.Update(modificar);
+            context.SaveChanges();
+
+        }
+
+        public dynamic getTodas()
+        {
+            dynamic personas = new ExpandoObject();
+
+            personas = (from persona in context.Datos
+
+                                  select persona).ToList();
+
+            return personas;
+        }
+        public dynamic getPersona(int folio)
+        {
+            dynamic persona = new ExpandoObject();
+
+            persona = (from registro in context.Datos
+                       where registro.pkFormulario.Equals(folio)
+                        select registro).FirstOrDefault();
+
+            return persona;
+        }
+
     }
 }
