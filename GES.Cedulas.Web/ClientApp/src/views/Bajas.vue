@@ -5,7 +5,7 @@
 
             <v-col class="mb-4">
                 <h1 class="display-2 font-weight-bold mb-3">
-                    Registros
+                    Bajas de Registros
                 </h1>
             </v-col>
 
@@ -25,6 +25,9 @@
                                         <th class="text-center">
                                             Teléfono
                                         </th>
+                                        <th class="text-center">
+                                            Elmininar
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,7 +36,13 @@
                                         <td>{{ item.nombre }}</td>
                                         <td>{{ item.correo }}</td>
                                         <td>{{ item.telefono }}</td>
-                                        
+                                        <td>
+                                            <v-icon small
+                                                    class="mr-2"
+                                                    @click="eliminarPersona(item.pkFormulario)">
+                                                mdi-delete-empty
+                                            </v-icon>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </v-simple-table>
@@ -42,17 +51,52 @@
                 </div>
             </v-col>
         </v-row>
+        <v-snackbar v-model="snackbar"
+                    :color="colorSnackbar"
+                    :multi-line="true"
+                    :timeout="5000">
+            {{ mensaje }}
+            <v-btn dark
+                   text
+                   @click="snackbar = false">
+                Cerrar
+            </v-btn>
+        </v-snackbar>
     </v-container>
 </template>
 
 <script>
     import FormularioService from '../services/formulario-service';
     export default {
-        name: "Listados",
+        name: "Bajas",
         data: () => ({
             personas: null,
+            mensaje:null,
         }),
 
+        methods: {
+            
+
+            eliminarPersona(id) {
+                
+                console.log(id);
+                FormularioService.eliminar(id).then(
+                    g => {
+                        console.log("Enviado");
+                        console.log(g);
+                        this.mensaje = 'Eliminado';
+                        this.colorSnackbar = 'green';
+                        this.snackbar = true;
+                    }, error => {
+                        console.log("Ha habido un error");
+                        console.log(error);
+                        this.mensaje = 'Ha habido un error';
+                        this.colorSnackbar = 'error';
+                        this.snackbar = true;
+                    }
+                );
+            },
+        },
 
         mounted() {
             FormularioService.getPersonas().then(

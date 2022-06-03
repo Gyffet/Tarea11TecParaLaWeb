@@ -82,6 +82,19 @@ class FormularioServices {
             });
     }
 
+    eliminar(f) {
+        console.log("Service folio:" + f);
+        return axios.get(Utils.urlAPI() + 'formulario/eliminar', {
+            params: {
+                folio: f
+            },
+            headers: authHeader()
+        }).then(this.handleResponse)
+            .then(response => {
+                return response.data;
+            });
+    }
+
 
 
 

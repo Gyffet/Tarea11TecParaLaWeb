@@ -17,6 +17,7 @@ namespace Formulario.Repositories
         public dynamic getTodas();
         public void modificarFormulario(Persona persona, Institucion institucion, Capacitacion capacitacion, Pago pago, int id);
         public dynamic getPersona(int folio);
+        public void eliminar(int folio);
     }
 
     public class FormularioRepository : IFormularioRepository
@@ -26,6 +27,15 @@ namespace Formulario.Repositories
         public FormularioRepository(FormularioContext context)
         {
             this.context = context;
+        }
+
+        public void eliminar(int folio)
+        {
+            var persona = (from registro in context.Datos
+                             where registro.pkFormulario.Equals(folio)
+                             select registro).FirstOrDefault();
+            context.Remove(persona);
+            context.SaveChanges();
         }
 
         public void guardarFormulario(Persona persona, Institucion institucion, Capacitacion capacitacion, Pago pago)

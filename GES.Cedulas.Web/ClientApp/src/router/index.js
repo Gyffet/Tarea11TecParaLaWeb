@@ -3,8 +3,8 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Altas from "../views/Altas.vue";
 import Modificaciones from "../views/Modificaciones.vue"
-
-
+import Listados from "../views/Listados.vue"
+import Bajas from "../views/Bajas.vue"
 
 Vue.use(VueRouter);
 
@@ -23,6 +23,16 @@ const routes = [
         path: "/modificaciones",
         name: "Modificaciones",
         component: Modificaciones
+    },
+    {
+        path: "/listados",
+        name: "Listados",
+        component: Listados
+    },
+    {
+        path: "/bajas",
+        name: "Bajas",
+        component: Bajas
     },
 ];
 

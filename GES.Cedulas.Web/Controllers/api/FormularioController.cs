@@ -40,6 +40,21 @@ namespace Formulario.Controllers.api
             }
         }
 
+        [HttpGet]
+        [Route("eliminar")]
+        public dynamic eliminar(int folio)
+        {
+            try
+            {
+                repository.eliminar(folio);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
         [HttpPost]
         [Route("modificar")]
         public IActionResult modificarFormulario([FromBody] Persona persona, string jsonIntitucion, string jsonCapacitacion, string jsonPago, int id)
