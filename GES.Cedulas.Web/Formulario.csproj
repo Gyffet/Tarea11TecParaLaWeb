@@ -44,6 +44,7 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\dist\img\" />
+    <Folder Include="ClientApp\dist\js\" />
     <Folder Include="ClientApp\src\assets\files\" />
     <Folder Include="ClientApp\src\assets\static\" />
   </ItemGroup>
