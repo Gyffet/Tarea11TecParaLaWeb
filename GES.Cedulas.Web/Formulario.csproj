@@ -45,7 +45,6 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\assets\files\" />
     <Folder Include="ClientApp\src\assets\static\" />
-    <Folder Include="Model\ModelExt\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

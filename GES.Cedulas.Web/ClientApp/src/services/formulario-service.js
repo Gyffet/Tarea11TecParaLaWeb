@@ -8,10 +8,19 @@ class FormularioServices {
         console.log(e);
         return axios.post(Utils.urlAPI() + 'formulario/enviar',
             {
+                'nombre': e.persona.nombre,
+                'apellido': e.persona.apellido,
+                'direccion': e.persona.direccion,
+                'telefono': e.persona.telefono,
+                'correo': e.persona.correo,
+                'documento': e.persona.documento,
+                'fechaNacimiento': e.persona.fechaNacimiento,
+            },
+            {
                 params: {
-                    jsonPersona: e.persona,
                     jsonIntitucion: e.institucion,
                     jsonCapacitacion: e.capacitacion,
+                    jsonPago: e.pago
                 },
                 headers: authHeader()
             })

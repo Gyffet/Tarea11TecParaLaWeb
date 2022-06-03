@@ -255,11 +255,21 @@
             <v-col align="left">
                 <div class="title row">
                     Fecha de inscripción       -
-                    <v-text-field v-model="Institucion.fecha"
-                                  required
-                                  outlined
-                                  dense
-                                  label="Ingrese Fecha"></v-text-field>
+                    <vc-date-picker v-model="Institucion.fecha"
+                                    required
+                                    :mask="masks"
+                                    :locale="{firstDayOfWeek: 1}">
+
+                        <template v-slot="{ inputValue, inputEvents }">
+                            <v-text-field readonly
+                                          outlined
+                                          dense
+                                          label="Ingrese Fecha"
+                                          :value="inputValue"
+                                          v-on="inputEvents" />
+                        </template>
+
+                    </vc-date-picker>
                 </div>
             </v-col>
         </v-row>
@@ -326,9 +336,10 @@
             Alta() {
                 console.log('Guardar');
                 var datos = {
-                    persona: JSON.stringify(this.datosPersonales),
+                    persona: this.datosPersonales,
                     institucion: JSON.stringify(this.Institucion),
                     capacitacion: JSON.stringify(this.Capacitacion),
+                    pago: JSON.stringify(this.planPago),
                 };
                 console.log(datos);
                 FormularioService.enviar(datos).then(

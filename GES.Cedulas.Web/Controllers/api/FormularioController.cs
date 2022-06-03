@@ -1,4 +1,5 @@
-﻿using Formulario.Repositories;
+﻿using Formulario.Model.ModelExt;
+using Formulario.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,12 +24,14 @@ namespace Formulario.Controllers.api
         
         [HttpPost]
         [Route("enviar")]
-        public IActionResult guardarFormulario(string jsonPersona, string jsonIntitucion, string jsonCapacitacion)
+        public IActionResult guardarFormulario([FromBody]Persona persona, string jsonIntitucion, string jsonCapacitacion, string jsonPago)
         {
             try
             {
-                //var a = JsonConvert.DeserializeObject<Entregables>(jsonPersona);
-                repository.guardarFormulario();
+                var institucion = JsonConvert.DeserializeObject<Institucion>(jsonIntitucion);
+                var capacitacion = JsonConvert.DeserializeObject<Capacitacion>(jsonCapacitacion);
+                var pago = JsonConvert.DeserializeObject<Pago>(jsonPago);
+                repository.guardarFormulario(persona, institucion, capacitacion, pago);
                 return Ok();
             }
             catch (Exception ex)
